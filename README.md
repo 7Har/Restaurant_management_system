@@ -4,6 +4,10 @@ SP+SEPP project
 
 To run the server, run the following command:
 
+    python manage.py makemigrations
+    
+    python manage.py migrate
+
     python manage.py runserver
 
 ## Members
