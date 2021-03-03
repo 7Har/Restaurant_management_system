@@ -75,14 +75,14 @@ WSGI_APPLICATION = 'fdbtest.wsgi.application'
 
 DATABASES = {
     'default': {
-        #        'ENGINE': 'django.db.backends.sqlite3',
-        #       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sp_lab9',  # Name of the database*
-        'USER': 'root',  # user name for the database
-        'PASSWORD': '',  # password
-        'HOST': 'localhost',  # IP address of the database
-        'PORT': '3306',  # port number of database server
+               'ENGINE': 'django.db.backends.sqlite3',
+              'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'sp_lab9',  # Name of the database*
+#         'USER': 'root',  # user name for the database
+#         'PASSWORD': '',  # password
+#         'HOST': 'localhost',  # IP address of the database
+#         'PORT': '3306',  # port number of database server
     }
 }
 
