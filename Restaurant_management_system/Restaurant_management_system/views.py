@@ -5,7 +5,6 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'index.html')
-    # return HttpResponse("<h1 align='center'> <font color='#FF0000' size='9' > Welcome Our Restaurant </font> </h1>")
 
 
 # def about(request):

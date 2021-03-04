@@ -100,5 +100,10 @@ alert('Thanks for ordering with us. Your order id is {{id}}. Use it to track you
 localStorage.clear();
 document.location="/shop";
 {%endif%}
+
+/* restrict user browser click go back button */
+      function preback() { window.history.forward(); }
+      setTimeout("preback()", 0);
+      window.onunload = function() { null };
 </script>
 {% endblock %}
