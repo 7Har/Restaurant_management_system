@@ -130,7 +130,9 @@ def handleSignUp(request):
     if request.method == "POST":
         # Get the post parameters
         username = request.POST['username']
-        name = request.POST['name']
+        # name = request.POST['name']
+        f_name = request.POST['f_name']
+        l_name = request.POST['l_name']
         email = request.POST['email']
         phone = request.POST['phone']
         password = request.POST['password']
@@ -143,7 +145,9 @@ def handleSignUp(request):
 
         # Create the user
         myuser = User.objects.create_user(username=username, email=email, password=password)
-        myuser.name = name
+        # myuser.name = name
+        myuser.first_name = f_name
+        myuser.last_name = l_name
         myuser.phone = phone
         myuser.save()
         messages.success(request, " Your Account has been successfully created")
