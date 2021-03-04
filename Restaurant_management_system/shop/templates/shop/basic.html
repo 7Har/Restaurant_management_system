@@ -159,12 +159,46 @@
     {% endif %}
     {% block body %} {% endblock %}
 
-
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     {% block js %} {% endblock %}
+<!--    <script>-->
+<!--    /* restrict user browser click go back button */-->
+<!--    function preback() { window.history.forward(); }-->
+<!--    setTimeout("preback()", 0);-->
+<!--    window.onunload = function() { null };-->
+
+<!--    /* Left click dissabled (not select any content or text)*/-->
+<!--    function disableselect(e) { return false; }-->
+
+<!--    function reEnable() { return true; }-->
+<!--    document.onselectstart = new Function("return false")-->
+<!--    if (window.sidebar) {-->
+<!--        document.onmousedown = disableselect-->
+<!--        document.onclick = reEnable-->
+<!--    }-->
+
+<!--    /* Right click dissabled */-->
+<!--    function ieClicked() { if (document.all) { return false; } }-->
+
+<!--    function firefoxClicked(e) { if (document.layers || (document.getElementById && !document.all)) { if (e.which == 2 || e.which == 3) { return false; } } }-->
+<!--    if (document.layers) {-->
+<!--        document.captureEvents(Event.MOUSEDOWN);-->
+<!--        document.onmousedown = firefoxClicked;-->
+<!--    } else {-->
+<!--        document.onmouseup = firefoxClicked;-->
+<!--        document.oncontextmenu = ieClicked;-->
+<!--    }-->
+<!--    document.oncontextmenu = new Function("return false")-->
+
+<!--    /* Dissable shortcut key */-->
+<!--    document.onkeydown = function(e) {-->
+<!--        if ((e.ctrlKey && e.shiftKey && (e.keyCode === 73)) || (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 72 || e.keyCode === 74 || e.keyCode === 78 || e.keyCode === 79 || e.keyCode === 80 || e.keyCode === 82 || e.keyCode === 83 || e.keyCode === 85 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 89 || e.keyCode === 90))) { return false; }-->
+<!--        return true;-->
+<!--    };-->
+<!--    </script>-->
   </body>
 </html>
