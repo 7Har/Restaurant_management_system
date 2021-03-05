@@ -93,7 +93,7 @@
 
 {%if msg|length != 0 %}
 alert('{{msg}}');
-window.location.href="/shop"
+window.history.back();
 {%endif%}
 
 if (localStorage.getItem('cart') == null) {
