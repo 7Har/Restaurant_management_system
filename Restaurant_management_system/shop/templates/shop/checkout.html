@@ -4,9 +4,9 @@
 {% block body %}
 
 <div class="container">
-   <div class="col my-4">
+   <div class="col my-3">
         <h2> Step 1 - My Awesome Cart Express Checkout - Review Your Cart items </h2>
-        <div class="my-4">
+        <div class="my-2">
             <ul class="list-group" id='items'>
             </ul>
         </div>
@@ -66,13 +66,14 @@ if (localStorage.getItem('cart') == null) {
 } else {
     cart = JSON.parse(localStorage.getItem('cart'));
 }
-//console.log(cart);
+<!--console.log(cart);-->
 var sum = 0;
 var sumPrice = 0;
 var totalPrice = 0;
 if ($.isEmptyObject(cart)) {
     // If object is empty
-    mystr = "<p>Your cart is empty, please add some items before checking out ! </p>"
+    mystr = "<b><p style='font-size:150%; color:#FF000C;'> Your cart is empty, please add some items before checking out ! </p></b>"
+    mystr = mystr + "<h5> Click <a href='/shop/'><button '>Here</button></a> to Add items. </h5><div class='mx-2 my-2'>";
     $('#items').append(mystr);
 } else {
     var i = 0;
@@ -101,9 +102,9 @@ localStorage.clear();
 document.location="/shop";
 {%endif%}
 
-/* restrict user browser click go back button */
-      function preback() { window.history.forward(); }
-      setTimeout("preback()", 0);
-      window.onunload = function() { null };
+    /* restrict user browser click go back button */
+    function preback() { window.history.forward(); }
+    setTimeout("preback()", 0);
+    window.onunload = function() { null };
 </script>
 {% endblock %}
