@@ -3,6 +3,7 @@
 {% block title%} Checkout - My Awesome Cart{% endblock %}
 {% block body %}
 
+{% if user.is_authenticated %}
 <div class="container">
     <div class="col my-3">
         <h2> My Awesome Cart Express Checkout - Review Your Cart items </h2>
@@ -58,6 +59,10 @@
         </span>
     </div>
 </div>
+{% else %}
+    <div class="my-2"><center><b><p style='font-size:150%; color:#FF000C;'> Before checkout you need to login. </p></b></center></div>
+{% endif %}
+
 
 {% endblock %}
 
@@ -105,9 +110,9 @@ localStorage.clear();
 document.location="/shop";
 {%endif%}
 
-    /* restrict user browser click go back button */
-    function preback() { window.history.forward(); }
-    setTimeout("preback()", 0);
-    window.onunload = function() { null };
+<!--    /* restrict user browser click go back button */-->
+<!--    function preback() { window.history.forward(); }-->
+<!--    setTimeout("preback()", 0);-->
+<!--    window.onunload = function() { null };-->
 </script>
 {% endblock %}

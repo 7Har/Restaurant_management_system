@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.http import HttpResponseRedirect
 
 # I have created this file - Darshan
 # from django.http import HttpResponse
@@ -133,10 +134,10 @@ def handeLogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Successfully Logged In")
-            return redirect("/shop")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             messages.error(request, "Invalid credentials! Please try again")
-            return redirect("/shop")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     return HttpResponse("404- Not found")
 
@@ -156,7 +157,7 @@ def handleSignUp(request):
         # check for errorneous input
         if (password1 != password):
             messages.error(request, " Passwords do not match")
-            return redirect('/shop')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         # Create the user
         myuser = User.objects.create_user(username=username, email=email, password=password)
@@ -166,7 +167,7 @@ def handleSignUp(request):
         myuser.phone = phone
         myuser.save()
         messages.success(request, " Your Account has been successfully created")
-        return redirect('/shop')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     else:
         return HttpResponse("404 - Not found")
@@ -175,4 +176,4 @@ def handleSignUp(request):
 def handleLogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
