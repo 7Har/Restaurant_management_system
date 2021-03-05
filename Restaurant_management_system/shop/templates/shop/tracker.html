@@ -25,6 +25,16 @@
 {% block js %}
 <script>
 
+$('#popcart').popover();
+updatePopover(cart);
+
+function updatePopover(cart) {
+    var popStr = "";
+    popStr = popStr + "<h5> Click <a href='/shop/checkout'><button '>Here</button></a> to order </h5><div class='mx-2 my-2'>";
+    document.getElementById("popcart").setAttribute('data-content', popStr);
+    $('#popcart').popover();
+}
+
 $('#trackerForm').submit(function(event) {
     $('#mydiv').empty();
     var formData = {
