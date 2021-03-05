@@ -41,6 +41,7 @@
 
   {% block body %}
   {% load static %}
+<br>
 <div class="container">
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}
@@ -60,7 +61,7 @@
                         <div class="card align-items-center" style="width: 18rem;">
                             <img src='/media/{{i.image}}' class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name|slice:"0:20"}}...</h5>
                                 <h6 style="color: #ff0000">Rs. <i id="pricepr{{i.id}}">{{i.price}}</i>/-</h6>
                                 <p class="card-text">{{i.desc|slice:"0:23"}}...</p>
                                 <span id="divpr{{i.id}}" class="divpr">
@@ -119,12 +120,17 @@ updatePopover(cart);
 
 function updatePopover(cart) {
     var popStr = "";
-    popStr = popStr + "<h5> Your items in cart </h5><div class='mx-2 my-2'>";
+    popStr = popStr + "<h5> Your items in cart: </h5><div class='mx-2 my-2'>";
     var i = 1;
+    var j = 0;
     for(var item in cart) {
-    popStr = popStr + "<b>" + i + "</b>. ";
-    popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 15) + "... ( Qty: " + cart[item][0] + ' )<br>';
-    i = i + 1;
+        popStr = popStr + "<b>" + i + "</b>. ";
+        popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 15) + "... ( Qty: " + cart[item][0] + ' )<br>';
+        i = i + 1;
+        j = j + 1;
+    }
+    if(j == 0) {
+        popStr = popStr + "<p><b> No item available in your cart </b></p><div class='mx-2 my-2'>";
     }
     popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id='checkout'>Checkout</button></a> <a href='/shop/'><button class='btn btn-primary' onclick='clearCart()' id='clearCart'>Clear Cart</button></a>  ";
     document.getElementById("popcart").setAttribute('data-content', popStr);
