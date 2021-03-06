@@ -6,7 +6,7 @@
 {% if user.is_authenticated %}
 <div class="container">
     <div class="col my-3">
-        <h2> My Awesome Cart Express Checkout - Review Your Cart items </h2>
+        <span id="title"><h2> My Awesome Cart Express Checkout - Review Your Cart items </h2></span>
         <div class="my-2">
             <ul class="list-group" id='items'>
             </ul>
@@ -60,9 +60,10 @@
     </div>
 </div>
 {% else %}
-    <div class="my-2"><center><b><p style='font-size:150%; color:#FF000C;'> Before checkout you need to login. </p></b></center></div>
+    <div class="alert alert-info">
+        <font style="font-size:22px"><center>Before checkout you need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong></center></font>
+    </div>
 {% endif %}
-
 
 {% endblock %}
 
@@ -79,10 +80,12 @@ var sumPrice = 0;
 var totalPrice = 0;
 if ($.isEmptyObject(cart)) {
     // If object is empty
-    mystr = "<b><p style='font-size:150%; color:#FF000C;'> Your cart is empty, please add some items before checking out ! </p></b>"
-    mystr = mystr + "<h5> Click <a href='/shop/'><button '>Here</button></a> to Add items. </h5><div class='mx-2 my-2'>";
+    mystr = "<div class='alert alert-info'><font style='font-size:22px'>"
+    mystr = mystr + "<center>Your cart is <strong>Empty</strong>, please <strong>Add</strong> some items before checking out ! </center>"
+    mystr = mystr + "<center>Click <a href='/shop/' class='alert-link'>Here</a> to Add items.</center></font></div>";
     $('#items').append(mystr);
     document.getElementById('info').innerHTML = "";
+    document.getElementById('title').innerHTML = "";
 } else {
     var i = 0;
     for (item in cart) {
