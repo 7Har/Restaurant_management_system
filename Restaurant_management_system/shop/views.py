@@ -27,14 +27,6 @@ def index(request):
     # return HttpResponse("<h1 align='center'> <font color='#FF0000' size='9' > Welcome Our Restaurant </font> </h1>")
 
 
-# def login(request):
-#     return render(request, 'shop/login.html')
-
-
-# def signup(request):
-#     return render(request, 'shop/signup.html')
-
-
 def about(request):
     return render(request, 'shop/about.html')
 
@@ -136,7 +128,7 @@ def handeLogin(request):
             messages.success(request, "Successfully Logged In")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
-            messages.error(request, "Invalid credentials! Please try again")
+            messages.warning(request, "Invalid credentials! Please try again")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     return HttpResponse("404- Not found")
@@ -146,7 +138,6 @@ def handleSignUp(request):
     if request.method == "POST":
         # Get the post parameters
         username = request.POST['username']
-        # name = request.POST['name']
         f_name = request.POST['f_name']
         l_name = request.POST['l_name']
         email = request.POST['email1']
@@ -156,12 +147,11 @@ def handleSignUp(request):
 
         # check for errorneous input
         if (password1 != password):
-            messages.error(request, " Passwords do not match")
+            messages.warning(request, " Passwords do not match")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
         # Create the user
         myuser = User.objects.create_user(username=username, email=email, password=password)
-        # myuser.name = name
         myuser.first_name = f_name
         myuser.last_name = l_name
         myuser.phone = phone
