@@ -1,6 +1,12 @@
 # Restaurant_management_system
 SP+SEPP project
 
+For login:
+
+    customer:   username:"# dkpdkp" password:"123456789"
+    Employee:   username:"admina" password:"123456789"
+    Admin   :   username:"dkp" password:"Dkp@4321"
+
 
 To run the server, run the following command:
 
