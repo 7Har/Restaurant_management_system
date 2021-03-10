@@ -120,19 +120,22 @@ updatePopover(cart);
 
 function updatePopover(cart) {
     var popStr = "";
-    popStr = popStr + "<h5> Your items in cart: </h5><div class='mx-2 my-2'>";
+    popStr = popStr + "<div class='mx-2 my-2'>";
     var i = 1;
     var j = 0;
     for(var item in cart) {
         popStr = popStr + "<b>" + i + "</b>. ";
-        popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 15) + "... ( Qty: " + cart[item][0] + ' )<br>';
+        popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 15) + "... (Qty: " + cart[item][0] + ')<br>';
         i = i + 1;
         j = j + 1;
     }
     if(j == 0) {
         popStr = popStr + "<p><b> No item available in your cart </b></p><div class='mx-2 my-2'>";
+        popStr = popStr + "</div> <a href='/shop'><button class='btn btn-primary'>Add items</button></a> ";
     }
-    popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id='checkout'>Checkout</button></a> <a href='/shop/'><button class='btn btn-primary' onclick='clearCart()' id='clearCart'>Clear Cart</button></a>  ";
+    else{
+        popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id='checkout'>Checkout</button></a> <a href='/shop/'><button class='btn btn-primary' onclick='clearCart()' id='clearCart'>Clear Cart</button></a>  ";
+    }
     document.getElementById("popcart").setAttribute('data-content', popStr);
     $('#popcart').popover();
 }
