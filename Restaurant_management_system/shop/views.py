@@ -150,15 +150,19 @@ def handleSignUp(request):
             messages.warning(request, " Passwords do not match")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-        # Create the user
-        myuser = User.objects.create_user(username=username, email=email, password=password)
-        myuser.first_name = f_name
-        myuser.last_name = l_name
-        myuser.phone = phone
-        myuser.save()
-        messages.success(request, " Your Account has been successfully created")
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
+        try:
+            user = User.objects.get(username=username)
+            messages.warning(request, " Username Already taken. Try with different Username.")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        except User.DoesNotExist:
+            # Create the user
+            myuser = User.objects.create_user(username=username, email=email, password=password)
+            myuser.first_name = f_name
+            myuser.last_name = l_name
+            myuser.phone = phone
+            myuser.save()
+            messages.success(request, " Your Account has been successfully created")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         return HttpResponse("404 - Not found")
 
