@@ -13,5 +13,6 @@ urlpatterns = [
     path('search/', views.search, name="Search"),
     path('checkout/', views.checkout, name="Checkout"),
     path('productView/<int:myid>', views.productView, name="productView"),
+    path("handlerequest/", views.handlerequest, name="HandleRequest"),
 
 ]

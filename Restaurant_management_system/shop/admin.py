@@ -15,7 +15,8 @@ class OrderUpdateAdmin(admin.ModelAdmin):
 
 
 class OrdersAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'name', 'email')
+    list_display = ('order_id', 'name', 'email', 'timestamp')
+    list_filter = ['timestamp']
 
     def has_add_permission(self, request):
         return False
@@ -31,7 +32,8 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'desc', 'email')
+    list_display = ('name', 'desc', 'email', 'timestamp')
+    list_filter = ['timestamp']
 
     def has_delete_permission(self, request, obj=None):
         return False
@@ -49,6 +51,4 @@ admin.site.register(Orders, OrdersAdmin)
 admin.site.register(OrderUpdate, OrderUpdateAdmin)
 
 admin.site.site_header = "Online Food Order"
-
-
 
