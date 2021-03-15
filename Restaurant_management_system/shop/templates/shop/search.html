@@ -40,6 +40,13 @@
 
   {% block body %}
   {% load static %}
+<div>&nbsp;
+    <a href="/shop" class="active text-dark">
+      <i class="fas fa-qrcode"></i>
+      <span>All Food</span>
+    </a>
+</div>
+
 <div class="container">
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}

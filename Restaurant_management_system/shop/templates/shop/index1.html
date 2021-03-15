@@ -41,7 +41,19 @@
 
   {% block body %}
   {% load static %}
-<br>
+<div>&nbsp;
+    <a href="/shop" class="active text-dark">
+      <i class="fas fa-qrcode"></i>
+      <span>All Food</span>
+    </a>
+    {% for product, range, nSlides in allProds %}
+    &nbsp;
+    <a href="/shop/search/?search={{product.0.category}}" class="text-dark">
+          <i class="fas fa-stream"></i>
+          <span>{{product.0.category}}</span>
+    </a>
+    {% endfor %}
+</div>
 <div class="container">
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}

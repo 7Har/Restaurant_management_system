@@ -87,7 +87,7 @@ def search(request):
             allProds.append([prod, range(1, nSlides), nSlides])
     darshan = {'allProds': allProds, "msg": ""}
     if len(allProds) == 0 or len(query) < 3:
-        darshan = {'msg': "Please make sure to enter relevant search query"}
+        darshan = {'msg': "No item available. Please make sure to enter relevant search query"}
     return render(request, 'shop/search.html', darshan)
 
 
