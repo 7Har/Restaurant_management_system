@@ -1,5 +1,5 @@
 # Restaurant_management_system
-SP+SEPP project
+## SP+SEPP project
 
 For  customer login:
 
