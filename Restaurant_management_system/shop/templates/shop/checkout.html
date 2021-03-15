@@ -21,16 +21,16 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="Email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="abc@gmail.com">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="abc@gmail.com" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Address1">Address</label>
-                <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
+                <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St" required>
             </div>
             <div class="form-group">
                 <label for="Address2">Address Line 2</label>
@@ -39,22 +39,26 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="City">City</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="Surat">
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Surat" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="State">State</label>
-                    <input type="text" class="form-control" id="state" name="state" placeholder="Gujarat">
+                    <input type="text" class="form-control" id="state" name="state" placeholder="Gujarat" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="zip_code">Zip</label>
-                    <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="xxxxxx">
+                    <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="xxxxxx" required pattern="[0-9]{6}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" name="phone" placeholder="xxxxxxxxxxx">
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="xxxxxxxxxxx" required pattern="[0-9]{10}">
             </div>
-            <button type="submit" class="btn btn-primary">Place Order</button>
+            <div class="alert alert-info">
+              <strong>Info!</strong> online payment are currently disabled so please choose cash on delivery.
+            </div>
+            <button type="submit" class="btn btn-primary" name="onlinePay" disabled>Online Pay</button>
+            <button type="submit" class="btn btn-primary" name="cashOnDelivery">Cash On Delivery</button>
         </form>
         </span>
     </div>

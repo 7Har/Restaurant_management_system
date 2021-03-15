@@ -2,6 +2,13 @@
 
 {% block title%} {{product.product_name}} - My Awesome Cart{% endblock %}
 {% block body %}
+<div>&nbsp;
+    <a href="/shop" class="active text-dark">
+      <i class="fas fa-qrcode"></i>
+      <span>All Food</span>
+    </a>
+</div>
+
 <div class="container my-4">
     <div class="row">
     <div class="col-md-4">
@@ -14,7 +21,7 @@
         <p>{{product.desc}}</p>
 <!--        <button class="btn btn-primary mx-2">Add to Cart</button>-->
         <div class='alert alert-info col-md-4 col-md-offset-4'>
-            <center>Click <a href='/shop/' class='alert-link'>Here</a> to Order.</center>
+            <center>Click <a href='/shop/search/?search={{product.product_name}}' class='alert-link'>Here</a> to Order.</center>
         </div>
     </div>
     </div>

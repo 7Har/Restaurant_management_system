@@ -10,7 +10,8 @@ from math import ceil
 from django.contrib.auth import authenticate, login, logout
 import json
 from django.views.decorators.csrf import csrf_exempt
-# from PayTm import Checksum
+from PayTm import Checksum
+MERCHANT_KEY = 'kbzk1DSbJiV_O3p5';   # Your-Merchant-Key-Here
 
 
 def index(request):
@@ -86,7 +87,7 @@ def search(request):
             allProds.append([prod, range(1, nSlides), nSlides])
     darshan = {'allProds': allProds, "msg": ""}
     if len(allProds) == 0 or len(query) < 3:
-        darshan = {'msg': "Please make sure to enter relevant search query"}
+        darshan = {'msg': "No item available. Please make sure to enter relevant search query"}
     return render(request, 'shop/search.html', darshan)
 
 
@@ -107,7 +108,24 @@ def checkout(request):
         update.save()
         thank = True
         id = order.order_id
-        return render(request, 'shop/checkout.html', {'thank': thank, 'id': id})
+        if 'onlinePay' in request.POST:
+            # Request paytm to transfer the amount to your account after payment by user
+            darshan_dict = {
+
+                'MID': 'WorldP64425807474247',  # Your-Merchant-Id-Here
+                'ORDER_ID': str(order.order_id),
+                'TXN_AMOUNT': str(amount),
+                'CUST_ID': email,
+                'INDUSTRY_TYPE_ID': 'Retail',
+                'WEBSITE': 'WEBSTAGING',
+                'CHANNEL_ID': 'WEB',
+                'CALLBACK_URL': 'http://127.0.0.1:8000/shop/handlerequest/',
+
+            }
+            darshan_dict['CHECKSUMHASH'] = Checksum.generate_checksum(darshan_dict, MERCHANT_KEY)
+            return render(request, 'shop/paytm.html', {'darshan_dict': darshan_dict})
+        elif 'cashOnDelivery' in request.POST:
+            return render(request, 'shop/checkout.html', {'thank': thank, 'id': id})
     return render(request, 'shop/checkout.html')
 
 
@@ -171,3 +189,22 @@ def handleLogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@csrf_exempt
+def handlerequest(request):
+    # paytm will send you post request here
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+
+    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print('order successful')
+        else:
+            print('order was not successful because' + response_dict['RESPMSG'])
+    return render(request, 'shop/paymentstatus.html', {'response': response_dict})
