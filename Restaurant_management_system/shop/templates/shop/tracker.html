@@ -50,7 +50,7 @@ $('#trackerForm').submit(function(event) {
         })
 
         .done(function(data) {
-<!--            console.log(data)-->
+//            console.log(data)
             $('#mydiv').empty();
             data = JSON.parse(data);
 
@@ -74,13 +74,14 @@ $('#trackerForm').submit(function(event) {
                 for (i = 0; i < updates.length; i++) {
                     let text = updates[i]['text'];
                     let time = updates[i]['time'];
-                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">${text}<span class="badge badge-primary badge-pill">${time}</span></li>`
+                    var s = new Date(time).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'}); 
+                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">${text}<span class="badge badge-primary badge-pill">${s}</span></li>`
                     $('#items').append(mystr);
                 }
 
                 // fill products details
                 cart = JSON.parse(data['itemsJson']);
-<!--                console.log(cart);-->
+                // console.log(typeof(cart));
 
                 for (item in cart) {
                     let name = cart[item][1];

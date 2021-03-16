@@ -15,7 +15,7 @@ class OrderUpdateAdmin(admin.ModelAdmin):
 
 
 class OrdersAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'name', 'email', 'timestamp')
+    list_display = ('order_id', 'userId', 'name', 'email', 'timestamp')
     list_filter = ['timestamp']
 
     def has_add_permission(self, request):

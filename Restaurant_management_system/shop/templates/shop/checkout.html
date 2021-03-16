@@ -14,10 +14,11 @@
     </div>
     <div class="col my-4">
         <span id="info">
-        <h2> Enter Address & Other Details</h2>
+        <h2>{{ request.user.first_name }} Enter Address & Other Details</h2>
         <form method="post" action="/shop/checkout/">{% csrf_token %}
             <input type="hidden" name="itemsJson" id="itemsJson">
             <input type="hidden" name="amount" id="amount">
+            <input type="hidden" name="user_id" id="user_id" value="{{ request.user.id }}">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name">Name</label>
@@ -78,7 +79,7 @@ if (localStorage.getItem('cart') == null) {
 } else {
     cart = JSON.parse(localStorage.getItem('cart'));
 }
-//console.log(cart);
+// console.log(cart);
 var sum = 0;
 var sumPrice = 0;
 var totalPrice = 0;
