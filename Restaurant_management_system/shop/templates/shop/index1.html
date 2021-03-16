@@ -37,20 +37,23 @@
            padding-left: 0,
            padding-right: 0;
            }
+           div.c {
+            width: 1000px;
+            margin: 10px;
+            font-size: 20px;
+            position: relative;
+            left: 174px; 
+          }
   {% endblock %}
 
   {% block body %}
   {% load static %}
-<div>&nbsp;
-    <a href="/shop" class="active text-dark">
-      <i class="fas fa-qrcode"></i>
-      <span>All Food</span>
-    </a>
+<div class="c">&nbsp;
     {% for product, range, nSlides in allProds %}
     &nbsp;
     <a href="/shop/search/?search={{product.0.category}}" class="text-dark">
-          <i class="fas fa-stream"></i>
-          <span>{{product.0.category}}</span>
+        <i class="fas fa-stream"></i>
+        <span>{{product.0.category}}</span>
     </a>
     {% endfor %}
 </div>
@@ -104,8 +107,10 @@
 {% endblock %}
 {% block js %}
 <script>
+// console.log({{request.user.id}});
 if (localStorage.getItem('cart') == null) {
     var cart = {};
+    
 } else {
     cart = JSON.parse(localStorage.getItem('cart'));
     updateCart(cart);

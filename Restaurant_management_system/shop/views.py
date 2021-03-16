@@ -66,6 +66,16 @@ def tracker(request):
     return render(request, 'shop/tracker.html')
 
 
+def orderView(request):
+    if request.user.is_authenticated:
+        current_user = request.user
+        orderHistory = Orders.objects.filter(userId=current_user.id)
+        if len(orderHistory) == 0:
+            messages.info(request, "You have not ordered.")
+            return render(request, 'shop/orderView.html')
+        return render(request, 'shop/orderView.html', {'orderHistory': orderHistory})
+    return render(request, 'shop/orderView.html')
+
 def searchMatch(query, item):
     if query in item.desc.lower() or query in item.product_name.lower() or query in item.category.lower() or query in item.desc or query in item.product_name or query in item.category or query in item.desc.upper() or query in item.product_name.upper() or query in item.category.upper():
         return True
@@ -94,6 +104,7 @@ def search(request):
 def checkout(request):
     if request.method == "POST":
         items_json = request.POST.get('itemsJson', '')
+        user_id = request.POST.get('user_id', '')
         name = request.POST.get('name', '')
         amount = request.POST.get('amount', '')
         email = request.POST.get('email', '')
@@ -102,7 +113,7 @@ def checkout(request):
         state = request.POST.get('state', '')
         zip_code = request.POST.get('zip_code', '')
         phone = request.POST.get('phone', '')
-        order = Orders(items_json=items_json, name=name, email=email, address=address, city=city, state=state, zip_code=zip_code, phone=phone, amount=amount)
+        order = Orders(items_json=items_json, userId=user_id, name=name, email=email, address=address, city=city, state=state, zip_code=zip_code, phone=phone, amount=amount)
         order.save()
         update = OrderUpdate(order_id=order.order_id, update_desc="The Order has been Placed")
         update.save()
@@ -131,7 +142,9 @@ def checkout(request):
 
 def productView(request, myid):
     product = Product.objects.filter(id=myid)
+    # print(product)
     return render(request, 'shop/prodView.html', {'product': product[0]})
+
 
 
 def handeLogin(request):
