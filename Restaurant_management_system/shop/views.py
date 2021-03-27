@@ -50,19 +50,25 @@ def tracker(request):
     if request.method == "POST":
         orderId = request.POST.get('orderId', '')
         email = request.POST.get('email', '')
-        try:
-            order = Orders.objects.filter(order_id=orderId, email=email)
-            if len(order) > 0:
-                update = OrderUpdate.objects.filter(order_id=orderId)
-                updates = []
-                for item in update:
-                    updates.append({'text': item.update_desc, 'time': item.timestamp})
-                    response = json.dumps({"status": "success", "updates": updates, "itemsJson": order[0].items_json}, default=str)
-                return HttpResponse(response)
-            else:
-                return HttpResponse('{"status":"noitem"}')
-        except Exception as e:
-            return HttpResponse('{"status":"error"}')
+        name = request.POST.get('name', '')
+        password = request.POST.get('password')
+        user = authenticate(username=name, password=password)
+        if user is not None:
+            try:
+                order = Orders.objects.filter(order_id=orderId, email=email)
+                if len(order) > 0:
+                    update = OrderUpdate.objects.filter(order_id=orderId)
+                    updates = []
+                    for item in update:
+                        updates.append({'text': item.update_desc, 'time': item.timestamp})
+                        response = json.dumps({"status": "success", "updates": updates, "itemsJson": order[0].items_json}, default=str)
+                    return HttpResponse(response)
+                else:
+                    return HttpResponse('{"status":"noitem"}')
+            except Exception as e:
+                return HttpResponse('{"status":"error"}')
+        else:
+            return HttpResponse('{"status":"Invalid"}')
     return render(request, 'shop/tracker.html')
 
 
