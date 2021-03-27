@@ -24,7 +24,7 @@ def index(request):
         nSlides = n // 4 + ceil((n / 4) - (n // 4))
         allProds.append([prod, range(1, nSlides), nSlides])
     darshan = {'allProds': allProds}
-    return render(request, 'shop/index1.html', darshan)
+    return render(request, 'shop/index.html', darshan)
     # return HttpResponse("<h1 align='center'> <font color='#FF0000' size='9' > Welcome Our Restaurant </font> </h1>")
 
 

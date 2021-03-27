@@ -7,6 +7,9 @@
     #cont {
         min-height : 596px;
     }
+    #cont2 {
+        min-height : 625px;
+    }
     .table-wrapper {
         background: #fff;
         padding: 20px 25px;
@@ -167,8 +170,10 @@
     </div>
 </div> 
 {% else %}
-    <div class="alert alert-info">
-        <font style="font-size:22px"><center>You need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong></center></font>
+    <div id="cont2">
+        <div class="alert alert-info">
+            <font style="font-size:22px"><center>You need to <strong><a class="alert-link" data-toggle="modal" data-target="#loginModal">Login</a></strong></center></font>
+        </div>
     </div>
 {% endif %}
 
