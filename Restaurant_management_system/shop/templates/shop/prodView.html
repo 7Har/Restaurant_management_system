@@ -1,6 +1,11 @@
 {% extends 'shop/basic.html' %}
 
 {% block title%} {{product.product_name}} - My Awesome Cart{% endblock %}
+{% block css %}
+    #cont {
+        min-height : 553px;
+    }
+{% endblock %}
 {% block body %}
 <div>&nbsp;
     <a href="/shop" class="active text-dark">
@@ -9,7 +14,7 @@
     </a>
 </div>
 
-<div class="container my-4">
+<div class="container my-4" id="cont">
     <div class="row">
     <div class="col-md-4">
         <img src="/media/{{product.image}}" width="233px" height="300px">

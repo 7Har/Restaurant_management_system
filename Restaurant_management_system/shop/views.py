@@ -76,6 +76,7 @@ def orderView(request):
         return render(request, 'shop/orderView.html', {'orderHistory': orderHistory})
     return render(request, 'shop/orderView.html')
 
+
 def searchMatch(query, item):
     if query in item.desc.lower() or query in item.product_name.lower() or query in item.category.lower() or query in item.desc or query in item.product_name or query in item.category or query in item.desc.upper() or query in item.product_name.upper() or query in item.category.upper():
         return True
@@ -144,7 +145,6 @@ def productView(request, myid):
     product = Product.objects.filter(id=myid)
     # print(product)
     return render(request, 'shop/prodView.html', {'product': product[0]})
-
 
 
 def handeLogin(request):

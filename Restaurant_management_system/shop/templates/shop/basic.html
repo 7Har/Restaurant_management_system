@@ -47,7 +47,7 @@
           </li>
         </ul>
         <form method="get" action="/shop/search" class="form-inline my-2 my-lg-0 mx-3">
-          <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search">
+          <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search" aria-label="Search" required>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         {% if user.is_authenticated %}
@@ -74,11 +74,12 @@
     </nav>
 
 
+
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header" style="background-color: rgb(111 202 203);">
             <h5 class="modal-title" id="loginModal">Login Here</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -96,6 +97,7 @@
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>
+            <p class="mb-0 mt-1">Don't have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign up now</a>.</p>
           </div>
         </div>
       </div>
@@ -105,7 +107,7 @@
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header" style="background-color: rgb(111 202 203);">
             <h5 class="modal-title" id="signupModal">SignUp Here</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -150,6 +152,7 @@
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>
+            <p class="mb-0 mt-1">Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login here</a>.</p>
           </div>
         </div>
       </div>
@@ -165,6 +168,10 @@
         {% endfor %}
     {% endif %}
     {% block body %} {% endblock %}
+    <div class="footer container-fluid bg-dark text-light">
+        <p class="text-center py-2 mb-0">Copyright © 2021 Designed by <a href="https://github.com/darshankparmar" target="_blank" rel="noopener noreferrer">@darshankparmar</a></p>
+    </div>
+
 
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

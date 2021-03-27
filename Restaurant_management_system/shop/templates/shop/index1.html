@@ -1,50 +1,50 @@
 
 {% extends 'shop/basic.html' %}
 {% block title%} Home {% endblock %}
-      {% block css %}
-          .col-md-3
-          {
-          display: inline-block;
-          margin-left:-4px;
-          }
-          .carousel-indicators .active {
-          background-color: blue;
-            }
-          .col-md-3 img{
-          width:227px;
-          height:222px;
-          }
-          body .carousel-indicator li{
-          background-color: blue;
-          }
-          body .carousel-indicators{
-          bottom: -35px;
-          }
-          .carousel-indicators li{
-          background-color: #7270fc;
-          }
-          body .carousel-control-prev-icon,
-          body .carousel-control-next-icon{
-          background-color: blue;
-          }
-          .carousel-control-prev,
-          .carousel-control-next{
-          top:auto;
-          bottom:auto;
-          padding-top:222px;
-          }
-           body .no-padding{
-           padding-left: 0,
-           padding-right: 0;
-           }
-           div.c {
-            width: 1000px;
-            margin: 10px;
-            font-size: 20px;
-            position: relative;
-            left: 174px; 
-          }
-  {% endblock %}
+{% block css %}
+    .col-md-3
+    {
+        display: inline-block;
+        margin-left:-4px;
+    }
+    .carousel-indicators .active {
+        background-color: blue;
+    }
+    .col-md-3 img{
+        width:227px;
+        height:222px;
+    }
+    body .carousel-indicator li{
+        background-color: blue;
+    }
+    body .carousel-indicators{
+        bottom: -35px;
+    }
+    .carousel-indicators li{
+        background-color: #7270fc;
+    }
+    body .carousel-control-prev-icon,
+    body .carousel-control-next-icon{
+        background-color: blue;
+    }
+    .carousel-control-prev,
+    .carousel-control-next{
+        top:auto;
+        bottom:auto;
+        padding-top:222px;
+    }
+    body .no-padding{
+        padding-left: 0,
+        padding-right: 0;
+    }
+    div.c {
+        width: 1000px;
+        margin: 10px;
+        font-size: 20px;
+        position: relative;
+        left: 174px;
+    }
+{% endblock %}
 
   {% block body %}
   {% load static %}
