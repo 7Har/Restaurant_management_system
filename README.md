@@ -3,11 +3,11 @@
 
 For  customer login:
 
-    username:"dkpdkp" password:"123456789"
+    username:"user" password:"user"
     
 For  Employee login:
 
-    username:"admina" password:"123456789"
+    username:"admin" password:"123456789"
     
 For  Admin login:
 
