@@ -50,5 +50,6 @@ admin.site.register(Contact, ContactAdmin)
 admin.site.register(Orders, OrdersAdmin)
 admin.site.register(OrderUpdate, OrderUpdateAdmin)
 
-admin.site.site_header = "Online Food Order"
-
+admin.site.site_header = "The Food Mania"
+admin.site.index_title = "The Food Mania Administration"
+admin.site.site_title = "The Food Mania Admin"
