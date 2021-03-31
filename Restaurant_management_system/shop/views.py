@@ -25,7 +25,6 @@ def index(request):
         allProds.append([prod, range(1, nSlides), nSlides])
     darshan = {'allProds': allProds}
     return render(request, 'shop/index.html', darshan)
-    # return HttpResponse("<h1 align='center'> <font color='#FF0000' size='9' > Welcome Our Restaurant </font> </h1>")
 
 
 def about(request):
@@ -149,13 +148,11 @@ def checkout(request):
 
 def productView(request, myid):
     product = Product.objects.filter(id=myid)
-    # print(product)
     return render(request, 'shop/prodView.html', {'product': product[0]})
 
 
 def handeLogin(request):
     if request.method == "POST":
-        # Get the post parameters
         loginusername = request.POST['loginusername']
         loginpassword = request.POST['loginpassword']
 
@@ -173,7 +170,6 @@ def handeLogin(request):
 
 def handleSignUp(request):
     if request.method == "POST":
-        # Get the post parameters
         username = request.POST['username']
         f_name = request.POST['f_name']
         l_name = request.POST['l_name']
@@ -182,7 +178,6 @@ def handleSignUp(request):
         password = request.POST['password']
         password1 = request.POST['password1']
 
-        # check for errorneous input
         if (password1 != password):
             messages.warning(request, " Passwords do not match")
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
