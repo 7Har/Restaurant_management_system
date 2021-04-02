@@ -15,6 +15,20 @@ For  Admin login:
     
     username:"harsh" password:"Harsh@12345"
 
+Requirement
+    
+[get-pip.zip](https://github.com/7Har/Restaurant_management_system/files/6250009/get-pip.zip)
+
+
+    python get-pip.py
+
+    py -m pip install django
+
+    pip install pycryptodome
+
+    pip install django-admin-rangefilter
+
+
 
 To run the server, run the following command:
 
