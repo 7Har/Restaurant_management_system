@@ -38,6 +38,6 @@ To run the server, run the following command:
 
     python manage.py runserver
 
-## Members
+## Members 
 * Darshan Parmar [@darshankparmar](https://github.com/darshankparmar) CE-084
 * Harsh Patel [@7Har](https://github.com/7Har) CE-098
